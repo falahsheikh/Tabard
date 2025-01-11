@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabard Sessions</title>
+  <link href="sessions.css" rel="stylesheet">
+  </head>
+  <body>
+  <div id="app" class="light">
+    <header class="main-header">
+      <div class="header-content">
+        <h1>
+          <img src="icons/icon48.png" alt="Tabard Icon" class="header-icon">
+          Tabard Sessions</h1>
+        <div class="header-actions">
+          <input type="text" id="searchSessions" placeholder="Search sessions..." class="search-input">
+          <button id="themeToggle" class="theme-toggle">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="main-content">
+      <div class="sidebar">
+        <div class="section-header">Sessions</div>
+        <div id="sessionsList" class="sessions-list"></div>
+      </div>
+      
+      <div class="content">
+        <div id="sessionDetails" class="session-details">
+          <div class="no-session-selected">
+            Select a session to view details
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="sessions.js"></script>
+  </body>
+</html>

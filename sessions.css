@@ -1,0 +1,591 @@
+:root {
+    --bg-light: #ffffff;
+    --bg-dark: #1a1a1a;
+    --text-light: #333333;
+    --text-dark: #ffffff;
+    --border-light: #e5e5e5;
+    --border-dark: #2a2a2a;
+    --accent: #2962ff;
+    --sidebar-width: 300px;
+  }
+   body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+  .dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+   .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: var(--bg-light);
+    border-bottom: 1px solid var(--border-light);
+    z-index: 100;
+  }
+   .dark .main-header {
+    background-color: var(--bg-dark);
+    border-bottom-color: var(--border-dark);
+  }
+   .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+   .header-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+   .search-input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    width: 250px;
+  }
+   .main-content {
+    display: flex;
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+  }
+   .sidebar {
+    width: var(--sidebar-width);
+    border-right: 1px solid var(--border-light);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+   .dark .sidebar {
+    border-right-color: var(--border-dark);
+  }
+   .section-header {
+    padding: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-light);
+  }
+   .sessions-list {
+    padding: 16px;
+  }
+  .session-item {
+    padding: 12px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: flex;
+}
+
+  .edit-name-btn {
+      margin-left: 50px; /* Reduce this value to move the edit button closer to the delete button */
+  }
+  .delete-session-btn {
+      margin-left: 5px; /* Keep this as is to keep the delete button in place */
+  }
+
+
+   .session-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+   .dark .session-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+   .session-item.active {
+    border-color: var(--accent);
+    background-color: rgba(41, 98, 255, 0.1);
+  }
+   .content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+   .session-details {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+   .no-session-selected {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+   .window-group {
+    margin-bottom: 24px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+  }
+   .window-header {
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+   .dark .window-header {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+   .tab-list {
+    padding: 12px;
+  }
+   .tab-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: move;
+  }
+   .tab-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+   .dark .tab-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+   .tab-favicon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+   .tab-title {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .action-button {
+    padding: 8px 12px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .action-button:hover {
+    opacity: 0.9;
+  }
+  
+  .session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .session-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .session-actions button {
+    padding: 4px 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .window-header {
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .restore-window {
+    padding: 4px 8px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .tab-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+  }
+  
+  .tab-url {
+    margin-left: 8px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    color: white;
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+  }
+  
+  .notification.success {
+    background-color: #4caf50;
+  }
+  
+  .notification.error {
+    background-color: #f44336;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--bg-light);
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+.dark .modal-content {
+  background-color: var(--bg-dark);
+}
+
+.group-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.group-input {
+  padding: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+
+.color-picker {
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  border: none;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.action-button.secondary {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.tab-item.selectable {
+  position: relative;
+  padding-left: 36px;
+}
+
+.tab-checkbox {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tab-group-indicator {
+  width: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.tab-item {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.tab-item.drag-over-top {
+  transform: translateY(8px);
+}
+
+.tab-item.drag-over-bottom {
+  transform: translateY(-8px);
+}
+
+.drop-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--accent);
+  pointer-events: none;
+}
+
+.drop-indicator.top {
+  top: -1px;
+}
+
+.drop-indicator.bottom {
+  bottom: -1px;
+}
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--bg-light);
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+.dark .modal-content {
+  background-color: var(--bg-dark);
+}
+
+.group-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.group-input {
+  padding: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+
+.color-picker {
+  width: 100%;
+  height: 40px;
+  padding: 0;
+  border: none;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.action-button.secondary {
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.tab-item.selectable {
+  position: relative;
+  padding-left: 36px;
+}
+
+.tab-checkbox {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tab-group-indicator {
+  width: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.group-creation-panel {
+  margin: 16px 0;
+  padding: 16px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+
+.dark .group-creation-panel {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+}
+
+.group-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.group-input {
+  padding: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  flex: 1;
+}
+
+.dark .group-input {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+  color: var(--text-dark);
+}
+
+.tab-select {
+  margin-right: 8px;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  color: white;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.select-all-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.window-header {
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dark .window-header {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: rgba(255, 255, 255, 0.6); /* Adjust text color for better contrast */
+  background-color: #333; /* Ensure the background has enough contrast */
+}
+
+.header-actions button {
+  width: 50px; /* Set desired width */
+  height: 35px; /* Set desired height */
+  padding: 10px 20px; /* Adjust padding for content inside */
+  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.dark input,
+.dark select {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  border-color: var(--border-dark);
+}
+
+.dark .window-group {
+  border-color: var(--border-dark);
+}
+
+.dark .tab-item {
+  border-color: var(--border-dark);
+}
+
+.dark .tab-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .group-creation-panel {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+}
+.header-content h1 {
+  display: inline-flex; 
+  align-items: center; 
+}
+
+.header-icon {
+  width: 30px; 
+  height: 30px;
+  margin-right: 10px; 
+  margin-left: -10px; 
+  vertical-align: middle; 
+}
+
+
+
+
+
+ 

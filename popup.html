@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tabard</title>
+ <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+ <div id="app" class="light">
+   <header class="header">
+     <h1>
+      <img src="icons/icon48.png" alt="Tabard Icon" class="header-icon">
+      Tabard</h1>
+     <div class="header-actions">
+       <button id="sessionsButton" class="btn">Sessions</button>
+       <button id="themeToggle" class="theme-toggle">
+         <!-- <span class="theme-icon">🌙</span> -->
+       </button>
+     </div>
+   </header>
+
+
+   <div id="mainView">
+
+     <div class="workspace-selector">
+       <!-- <select id="workspaceSelect" class="workspace-select">
+         <option value="all">All Tabs</option>
+       </select> -->
+       <button id="saveWorkspace" class="btn">Save Session</button>
+     </div>
+
+     <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search tabs..." class="search-input">
+    </div>
+
+
+     <div class="tab-groups" id="tabGroups"></div>
+
+
+     <div class="stats-panel" id="statsPanel">
+       <h3>Statistics</h3>
+       <div id="stats"></div>
+     </div>
+
+
+     <div class="settings-panel">
+       <button id="settingsToggle" class="btn">Settings</button>
+       <div id="settingsPanel" class="hidden">
+         <div class="setting-item">
+           <span>Auto-group tabs</span>
+           <input type="checkbox" id="autoGroupSetting">
+         </div>
+         <div class="setting-item">
+           <span>Sync across devices</span>
+           <input type="checkbox" id="syncSetting">
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div id="sessionsView" class="hidden">
+     <div class="sessions-header">
+       <h2>Saved Sessions</h2>
+       <button id="backToTabs" class="btn">Back to Tabs</button>
+     </div>
+     <div class="sessions-list" id="sessionsList"></div>
+   </div>
+ </div>
+ <script src="popup.js"></script>
+</body>
+</html>
