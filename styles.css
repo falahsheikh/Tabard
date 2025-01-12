@@ -18,19 +18,20 @@
     color: var(--text-dark);
   }
    .light {
-    background-color: var(--bg-light);
+    background-color: #ffffff;
     color: var(--text-light);
   }
    .header {
-    padding: 16px;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border-light);
+    margin-left: 10px;
   }
    .header-actions {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     align-items: center;
   }
    .theme-toggle {
@@ -61,6 +62,7 @@
     border: 1px solid var(--border-light);
     border-radius: 4px;
   }
+
    .btn {
     width: 100%;
     padding: 8px 16px;
@@ -70,15 +72,31 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  
    .btn:hover {
     opacity: 0.9;
   }
+
+  #sessionsButton {
+    background-color: #2962ff; /* Green background */
+    color: white; /* White text */
+    font-size: 14px; /* Font size */
+    padding: 8px 20px; /* Padding inside the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  #sessionsButton:hover {
+    background-color: #2962ff; /* Slightly darker green on hover */
+  }
+  
    .tab-groups {
     margin: 16px;
   }
    .tab-group {
     margin-bottom: 16px;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--bg-dark);
     border-radius: 4px;
   }
    .tab-group-header {
@@ -87,15 +105,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #89898953;
   }
    .tab-item {
     padding: 8px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--bg-dark);
     cursor: move;
     user-select: none;
+    background-color: #f6f6f6;
   }
    .tab-favicon {
     width: 16px;
@@ -135,6 +155,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border-light);
+    font-size: large;
   }
    .sessions-list {
     padding: 16px;
@@ -185,18 +206,28 @@
     min-height: 40px; 
     padding: 4px;
   }
+
+  .header h1 {
+    font-size: 30px;
+  }
   .header-content h1 {
     display: inline-flex; 
     align-items: center; 
     align-items: center;
+    /* margin-right: 750px; */
   }
   
   .header-icon {
-    width: 25px; 
-    height: 25px;
+    width: 30px; 
+    height: 30px;
     margin-right: 5px; 
     vertical-align: middle; 
   }
+
+
+
+
+
   
   
  
