@@ -609,12 +609,19 @@ button:disabled {
   margin-bottom: 15px; /* Add space between name and metadata */
 }
 
-.session-name {
+/* .session-name {
   display: block;
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+} */
+.session-name {
+  display: block;
+  width: 120px; /* Set a specific width for truncation */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Show "..." when overflow occurs */
 }
 
 .edit-name-btn,

@@ -2,12 +2,11 @@
     "manifest_version": 3,
     "name": "Tabard",
     "version": "1.0",
-    "description": "Advanced tab management for developers",
+    "description": "Advanced tab management",
     "permissions": [
         "tabs",
         "storage",
-        "tabGroups",
-        "notifications"
+        "tabGroups"
       ],
       "action": {
         "default_popup": "popup.html",

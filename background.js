@@ -66,4 +66,5 @@ let settings = {
       windowId: attachInfo.newWindowId
     });
   });
+
  

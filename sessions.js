@@ -276,6 +276,8 @@ setupGroupCreationListeners() {
       input.type = 'text';
       input.value = currentName;
       input.className = 'edit-name-input';
+      input.style.width = '120px';
+      
       
       nameElement.replaceWith(input);
       input.focus();
