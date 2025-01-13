@@ -587,5 +587,64 @@ button:disabled {
 
 
 
+.session-item {
+  position: relative;
+  display: flex;
+  align-items:center; /* Align items to the top */
+  width: 100%;
+  padding-bottom: 10px; /* Add some padding at the bottom of each item */
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.session-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.session-name-container {
+  position: relative;
+  padding-right: 160px; /* Space for buttons */
+  margin-bottom: 15px; /* Add space between name and metadata */
+}
+
+.session-name {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edit-name-btn,
+.delete-session-btn {
+  position: absolute;
+  top: 0; /* Align to the top of the container */
+  transform: translateY(0); /* Remove vertical centering */
+  z-index: 2;
+}
+
+.edit-name-btn {
+  right: 70px;
+}
+
+.delete-session-btn {
+  right: 10px;
+}
+
+.session-meta {
+  font-size: 0.9em; /* Slightly smaller font for metadata */
+  color: #666; /* Subdued color for metadata */
+}
+
+/* If the session name is an input field */
+input.session-name {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+
 
  
