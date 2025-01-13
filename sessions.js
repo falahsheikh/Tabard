@@ -115,7 +115,7 @@ class SessionManager {
     setupTheme() {
       const isDark = localStorage.getItem('darkMode') === 'true';
       document.body.classList.toggle('dark', isDark);
-      document.querySelector('.theme-icon').textContent = isDark ? '☀️' : '🌙';
+      document.querySelector('.theme-icon').textContent = isDark ? '𖤓' : '⏾';
     }
   
     async loadSettings() {
