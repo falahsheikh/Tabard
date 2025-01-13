@@ -404,7 +404,7 @@ setupGroupCreationListeners() {
       // Theme toggle
       document.getElementById('themeToggle').addEventListener('click', () => {
         const isDark = document.body.classList.toggle('dark');
-        document.querySelector('.theme-icon').textContent = isDark ? '☀️' : '🌙';
+        document.querySelector('.theme-icon').textContent = isDark ? '𖤓' : '⏾';
         localStorage.setItem('darkMode', isDark);
       });
   

@@ -538,15 +538,16 @@ button:disabled {
 }
 
 .header-actions button {
-  width: 50px; /* Set desired width */
-  height: 35px; /* Set desired height */
-  padding: 10px 20px; /* Adjust padding for content inside */
-  box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+  width: 30px;
+  height: 30px; /* Make height equal to width for a perfect circle */
+  padding: 0; /* Remove padding */
+  border-radius: 30%; /* Make it circular */
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
 }
+
 
 .dark input,
 .dark select {
