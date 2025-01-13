@@ -6,9 +6,6 @@
     "permissions": [
         "tabs",
         "storage",
-        "bookmarks",
-        "history",
-        "scripting",
         "tabGroups",
         "notifications"
       ],
