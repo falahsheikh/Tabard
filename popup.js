@@ -10,6 +10,60 @@ class TabManager {
       this.handleTabMove(tabId, moveInfo);
     });
   }
+  renderTabs(tabs) {
+    const container = document.getElementById('tabGroups');
+    container.innerHTML = '';
+  
+    let currentGroup = null;
+    let currentDomain = null;
+  
+    tabs.forEach((tab, index) => {
+      const domain = new URL(tab.url).hostname;
+  
+      if (domain !== currentDomain) {
+        // End the previous group if exists
+        if (currentGroup) {
+          container.appendChild(currentGroup);
+        }
+  
+        // Start a new group
+        currentGroup = document.createElement('div');
+        currentGroup.className = 'tab-group';
+        currentGroup.innerHTML = `
+          <div class="tab-group-header">
+            <span>${domain}</span>
+            <span>1 tab</span>
+          </div>
+        `;
+        currentDomain = domain;
+      } else {
+        // Update tab count for the current group
+        const tabCount = currentGroup.querySelector('.tab-group-header span:last-child');
+        const count = parseInt(tabCount.textContent) + 1;
+        tabCount.textContent = `${count} tab${count > 1 ? 's' : ''}`;
+      }
+  
+      const tabElement = document.createElement('div');
+      tabElement.className = 'tab-item';
+      tabElement.setAttribute('draggable', 'true');
+      tabElement.setAttribute('data-tab-id', tab.id);
+      tabElement.innerHTML = `
+        <img class="tab-favicon" src="${tab.favIconUrl || 'icons/default-favicon.png'}" alt="">
+        <span class="tab-title">${tab.title}</span>
+        <div class="tab-actions">
+          <button class="btn switch-tab">Switch</button>
+          <button class="btn close-tab">Close</button>
+        </div>
+      `;
+  
+      currentGroup.appendChild(tabElement);
+  
+      // Append the last group
+      if (index === tabs.length - 1) {
+        container.appendChild(currentGroup);
+      }
+    });
+  }
   async handleTabMove(tabId, moveInfo) {
     // Reload tabs to reflect new order
     await this.loadTabs();
@@ -35,10 +89,8 @@ class TabManager {
     }
     async loadTabs() {
       const tabs = await chrome.tabs.query({ currentWindow: true });
-      // Sort tabs based on their index to maintain Chrome's order
-      tabs.sort((a, b) => a.index - b.index);
-      const groups = this.groupTabsByDomain(tabs);
-      this.renderTabGroups(groups);
+      // Tabs are already sorted based on their index in Chrome
+      this.renderTabs(tabs);
     }
     groupTabsByDomain(tabs) {
       const groups = {};
