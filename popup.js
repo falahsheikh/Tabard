@@ -444,6 +444,7 @@ class TabManager {
       successMessage.style.textAlign = 'center';
       successMessage.style.width = '500px';
       successMessage.style.animation = 'slideInUp 0.5s ease-out, fadeOut 0.5s ease-in 2.5s';
+      successMessage.style.zIndex = 999;
       document.body.appendChild(successMessage);
     
       setTimeout(() => {
