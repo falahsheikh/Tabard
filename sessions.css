@@ -160,17 +160,30 @@
     text-overflow: ellipsis;
   }
   .action-button {
-    padding: 8px 12px;
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 4px;
+    padding: 8px 16px;
+    background: #e7e7e7;
+    color: #222;
+    border: 3px solid #929292;
+    border-right: 3px solid #4a4a4a;
+    border-bottom: 3px solid #4a4a4a;
+    border-radius: 0; /* Remove any existing border-radius */
     cursor: pointer;
+    font-family: 'Courier New', monospace;
     font-size: 14px;
+    transition: all 0.1s;
+    text-transform: uppercase;
+    font-weight: bold;
   }
   
   .action-button:hover {
-    opacity: 0.9;
+    opacity: 1; /* Override existing hover opacity */
+    background: #f0f0f0;
+  }
+  .action-button:active {
+    border: 3px solid #4a4a4a;
+    border-right: 3px solid #929292;
+    border-bottom: 3px solid #929292;
+    transform: translate(1px, 1px);
   }
   
   .session-item {
@@ -312,9 +325,11 @@
 }
 
 .action-button.secondary {
-  background-color: transparent;
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  background: #d0d0d0;
+  border: 3px solid #808080;
+  border-right: 3px solid #404040;
+  border-bottom: 3px solid #404040;
+  color: #222;
 }
 
 .tab-item.selectable {
@@ -424,6 +439,19 @@
   background-color: transparent;
   border: 1px solid var(--accent);
   color: var(--accent);
+}
+.action-button.secondary:active {
+  border: 3px solid #404040;
+  border-right: 3px solid #808080;
+  border-bottom: 3px solid #808080;
+}
+.action-button:disabled {
+  background: #c0c0c0;
+  border: 3px solid #a0a0a0;
+  color: #666;
+  opacity: 1;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .tab-item.selectable {
@@ -649,6 +677,249 @@ button:disabled {
 input.session-name {
   width: 100%;
   box-sizing: border-box;
+}
+/* Base button styles */
+.btn,
+.action-button,
+.restore-window,
+.edit-name-btn,
+.delete-session-btn,
+.return-to-current,
+.select-all-btn {
+  background: #e7e7e7;
+  color: #222;
+  border: 3px solid #929292;
+  border-right: 3px solid #4a4a4a;
+  border-bottom: 3px solid #4a4a4a;
+  border-radius: 4px;
+  cursor: pointer;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
+  font-size: 14px;
+  transition: all 0.1s;
+  padding: 8px 12px;
+}
+
+/* Button hover state */
+.btn:hover,
+.action-button:hover,
+.restore-window:hover,
+.edit-name-btn:hover,
+.delete-session-btn:hover,
+.return-to-current:hover,
+.select-all-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Button active/pressed state */
+.btn:active,
+.action-button:active,
+.restore-window:active,
+.edit-name-btn:active,
+.delete-session-btn:active,
+.return-to-current:active,
+.select-all-btn:active {
+  border: 3px solid #4a4a4a;
+  border-right: 3px solid #929292;
+  border-bottom: 3px solid #929292;
+  transform: translate(1px, 1px);
+}
+
+/* Disabled state */
+.btn:disabled,
+.action-button:disabled,
+.restore-window:disabled {
+  background: #c0c0c0;
+  border: 3px solid #a0a0a0;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #333;
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Smaller buttons (edit, delete, select-all) */
+.edit-name-btn,
+.delete-session-btn,
+.select-all-btn {
+  padding: 4px 8px;
+  font-size: 12px;
+  border-width: 2px;
+}
+
+/* Session action buttons positioning */
+.edit-name-btn {
+  right: 70px;
+}
+
+.delete-session-btn {
+  right: 10px;
+}
+
+/* Dark theme adjustments */
+.dark .btn,
+.dark .action-button,
+.dark .restore-window,
+.dark .edit-name-btn,
+.dark .delete-session-btn,
+.dark .return-to-current,
+.dark .select-all-btn {
+  background: #404040;
+  color: #e7e7e7;
+  border: 3px solid #606060;
+  border-right: 3px solid #202020;
+  border-bottom: 3px solid #202020;
+}
+
+.dark .btn:hover,
+.dark .action-button:hover,
+.dark .restore-window:hover,
+.dark .edit-name-btn:hover,
+.dark .delete-session-btn:hover,
+.dark .return-to-current:hover,
+.dark .select-all-btn:hover {
+  background: #505050;
+}
+
+.dark .btn:active,
+.dark .action-button:active,
+.dark .restore-window:active,
+.dark .edit-name-btn:active,
+.dark .delete-session-btn:active,
+.dark .return-to-current:active,
+.dark .select-all-btn:active {
+  border: 3px solid #202020;
+  border-right: 3px solid #606060;
+  border-bottom: 3px solid #606060;
+}
+
+/* Theme toggle button */
+#themeToggle {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Header base styles */
+.main-header,
+.header {
+  background: #e7e7e7;
+  border-bottom: 3px solid #4a4a4a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header content wrapper */
+.header-content,
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Title styling */
+h1 {
+  display: flex;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Icon styling */
+.header-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  border: 2px solid #929292;
+  border-radius: 6px;
+  padding: 2px;
+  background: white;
+  box-shadow: 
+    1px 1px 0 #4a4a4a,
+    2px 2px 0 #4a4a4a;
+}
+
+/* Search input styling */
+.search-input {
+  padding: 8px 12px;
+  border: 2px solid #929292;
+  border-right: 2px solid #4a4a4a;
+  border-bottom: 2px solid #4a4a4a;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 250px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4a4a4a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header actions container */
+.header-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Dark theme adjustments */
+.dark .main-header,
+.dark .header {
+  background: var(--bg-dark);
+  border-bottom-color: #202020;
+}
+
+.dark h1 {
+  color: #e7e7e7;
+}
+
+.dark .header-icon {
+  background: #2a2a2a;
+  border-color: #606060;
+  box-shadow: 
+    1px 1px 0 #202020,
+    2px 2px 0 #202020;
+}
+
+.dark .search-input {
+  background: var(--border-dark);
+  color: var(--text-dark);
+  border-color: #606060;
+  border-right-color: #202020;
+  border-bottom-color: #202020;
+}
+
+.dark .search-input:focus {
+  border-color: #808080;
+}
+
+/* Section headers (for consistency) */
+.section-header {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px;
+  border-bottom: 2px solid #929292;
+  background: #e7e7e7;
+  color: #222;
+}
+
+.dark .section-header {
+  background: var(--bg-dark);
+  border-bottom-color: #202020;
+  color: #e7e7e7;
 }
 
 
