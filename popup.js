@@ -311,27 +311,89 @@ class TabManager {
         const tabItem = e.target.closest('.tab-item');
         if (!tabItem || tabItem === this.draggedTab) return;
   
-        document.querySelectorAll('.drag-over').forEach(el => 
-          el.classList.remove('drag-over')
-        );
-        tabItem.classList.add('drag-over');
+        const draggedRect = this.draggedTab.getBoundingClientRect();
+        const targetRect = tabItem.getBoundingClientRect();
+        
+        // Get the mouse position relative to the tab's center
+        const mouseY = e.clientY;
+        const tabCenterY = targetRect.top + (targetRect.height / 2);
+        
+        // Remove any existing drag-over classes
+        document.querySelectorAll('.drag-over-up, .drag-over-down').forEach(el => {
+          el.classList.remove('drag-over-up', 'drag-over-down');
+        });
+  
+        // Add appropriate class based on mouse position
+        if (mouseY < tabCenterY) {
+          tabItem.classList.add('drag-over-up');
+        } else {
+          tabItem.classList.add('drag-over-down');
+        }
+      });
+      document.getElementById('tabGroups').addEventListener('dragleave', (e) => {
+        const tabItem = e.target.closest('.tab-item');
+        if (tabItem) {
+          tabItem.classList.remove('drag-over-up', 'drag-over-down');
+        }
       });
   
       document.getElementById('tabGroups').addEventListener('drop', (e) => 
         this.handleDrop(e)
       );
-       document.getElementById('tabGroups').addEventListener('drop', async (e) => {
+      document.getElementById('tabGroups').addEventListener('drop', async (e) => {
         e.preventDefault();
         const targetTab = e.target.closest('.tab-item');
         if (!targetTab || !this.draggedTab) return;
-         const sourceTabId = parseInt(this.draggedTab.dataset.tabId);
+  
+        const sourceTabId = parseInt(this.draggedTab.dataset.tabId);
         const targetTabId = parseInt(targetTab.dataset.tabId);
-         if (sourceTabId === targetTabId) return;
-         const sourceTabs = await chrome.tabs.query({ currentWindow: true });
-        const sourceIndex = sourceTabs.findIndex(tab => tab.id === sourceTabId);
-        const targetIndex = sourceTabs.findIndex(tab => tab.id === targetTabId);
-         await chrome.tabs.move(sourceTabId, { index: targetIndex });
-        await this.loadTabs();
+  
+        if (sourceTabId === targetTabId) return;
+  
+        try {
+          const tabs = await chrome.tabs.query({ currentWindow: true });
+          const targetTabInfo = tabs.find(tab => tab.id === targetTabId);
+          const sourceTabInfo = tabs.find(tab => tab.id === sourceTabId);
+          
+          // Determine if dropping above or below based on mouse position
+          const mouseY = e.clientY;
+          const targetRect = targetTab.getBoundingClientRect();
+          const targetCenterY = targetRect.top + (targetRect.height / 2);
+          
+          // Calculate new index based on drop position
+          let newIndex = targetTabInfo.index;
+          if (mouseY >= targetCenterY) {
+            // Dropping below, increment the target index
+            newIndex++;
+          }
+          
+          // Adjust index if moving backwards
+          if (sourceTabInfo.index < targetTabInfo.index) {
+            newIndex--;
+          }
+  
+          await chrome.tabs.move(sourceTabId, { index: newIndex });
+          await this.loadTabs();
+          
+        } catch (error) {
+          console.error('Error moving tab:', error);
+        } finally {
+          // Clean up any drag-over classes
+          document.querySelectorAll('.drag-over-up, .drag-over-down').forEach(el => {
+            el.classList.remove('drag-over-up', 'drag-over-down');
+          });
+        }
+      });
+      document.getElementById('tabGroups').addEventListener('dragend', (e) => {
+        if (this.draggedTab) {
+          this.draggedTab.classList.remove('dragging');
+          this.draggedTab = null;
+          
+          // Clean up any remaining drag-over classes
+          document.querySelectorAll('.drag-over-up, .drag-over-down').forEach(el => {
+            el.classList.remove('drag-over-up', 'drag-over-down');
+          });
+        }
       });
     }
     async saveWorkspace() {
@@ -344,7 +406,6 @@ class TabManager {
       } catch (error) {
         console.error('Error querying tabs:', error);
       }
-    
       const session = {
         id: Date.now().toString(),
         name,
