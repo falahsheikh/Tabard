@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Tabard",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Advanced tab management",
     "permissions": [
         "tabs",
