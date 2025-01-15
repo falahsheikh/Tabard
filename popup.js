@@ -378,18 +378,17 @@ class TabManager {
       successMessage.style.backgroundColor = '#4CAF50';
       successMessage.style.color = 'white';
       successMessage.style.padding = '10px 20px';
-      successMessage.style.borderRadius = '10px';
       successMessage.style.fontSize = '12px';
       successMessage.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+      successMessage.style.textAlign = 'center';
+      successMessage.style.width = '500px';
+      successMessage.style.animation = 'slideInUp 0.5s ease-out, fadeOut 0.5s ease-in 2.5s';
       document.body.appendChild(successMessage);
     
-      // Hide the message after 3 seconds
       setTimeout(() => {
-        successMessage.style.opacity = '0';
-        setTimeout(() => {
-          successMessage.remove();
-        }, 500); // Remove after fade-out
-      }, 3000);
+        successMessage.remove();
+      }, 3000); // Remove after 3 seconds
+      
     }
     
     

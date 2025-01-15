@@ -311,9 +311,26 @@ h1 {
   display: flex;
   gap: 16px;
   align-items: center;
+} 
+
+
+
+@keyframes slideInDown {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
 }
 
-
-  
-  
- 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
