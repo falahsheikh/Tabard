@@ -384,8 +384,6 @@
   bottom: -1px;
 }
 
-
-
 .modal {
   position: fixed;
   top: 0;
@@ -612,9 +610,6 @@ button:disabled {
   margin-left: -10px; 
   vertical-align: middle; 
 }
-
-
-
 
 .session-item {
   position: relative;
@@ -921,9 +916,3 @@ h1 {
   border-bottom-color: #202020;
   color: #e7e7e7;
 }
-
-
-
-
-
- 
