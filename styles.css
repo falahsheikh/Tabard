@@ -67,32 +67,31 @@
 .btn {
   width: 100%;
   padding: 8px 16px;
-  background: #e7e7e7; /* Classic light gray */
-  color: #222; /* Dark gray text */
-  font-size: 14px; /* Font size for consistency */
+  background: #e7e7e7; 
+  color: #222; 
+  font-size: 14px; 
   border: 3px solid #929292; /* Beveled border (top and left light gray) */
-  border-right: 3px solid #4a4a4a; /* Darker shadow for right border */
+  border-right: 3px solid #4a4a4a; 
   border-bottom: 3px solid #4a4a4a; /* Darker shadow for bottom border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; 
+  cursor: pointer;
   transition: transform 0.1s ease, background-color 0.1s ease;
 }
 
 .btn:hover {
-  opacity: 0.8; /* Slight fade effect on hover */
+  opacity: 0.8; 
 }
 
 .btn:active {
-  border: 3px solid #4a4a4a; /* Dark gray for all sides */
-  border-right: 3px solid #929292; /* Flip the light/shadow */
-  border-bottom: 3px solid #929292; /* Flip the light/shadow */
+  border: 3px solid #4a4a4a; 
+  border-right: 3px solid #929292; 
+  border-bottom: 3px solid #929292; 
   transform: translate(1px, 1px); /* Simulate button press */
 }
 
-/* Specific styling for #sessionsButton */
 #sessionsButton {
-  background-color: #e7e7e7; /* Blue background */
-  color: rgb(0, 0, 0); /* White text */
+  background-color: #e7e7e7; 
+  color: rgb(0, 0, 0); 
 }
 
 #sessionsButton:hover {
@@ -312,8 +311,6 @@ h1 {
   gap: 16px;
   align-items: center;
 } 
-
-
 
 @keyframes slideInDown {
   from {
